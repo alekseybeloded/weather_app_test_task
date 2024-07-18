@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 ruff = "^0.5.2"
+django = "^5.0.7"
 
 [tool.ruff]
 lint.select = ["E", "E3", "F", "B", "I", "W", "UP", "T20"]
