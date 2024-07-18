@@ -7,6 +7,53 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+ruff = "^0.5.2"
+
+[tool.ruff]
+lint.select = ["E", "E3", "F", "B", "I", "W", "UP", "T20"]
+lint.ignore = []
+
+lint.fixable = ["ALL"]
+lint.unfixable = []
+lint.preview = true
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "migrations",
+    "settings.py",
+    "test_*.py",
+    "conftest.py",
+    ]
+
+line-length = 100
+
+lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+target-version = 'py312'
+
+
+[tool.ruff.format]
+quote-style = "single"
 
 
 [build-system]
