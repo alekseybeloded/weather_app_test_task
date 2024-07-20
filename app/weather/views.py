@@ -42,10 +42,14 @@ def get_weather(request):
             }
         )
 
-    return render(request, 'weather/index.html', {'form': form, 'menu': menu})
+    return render(request, 'weather/index.html', {'form': form})
 
 
 def choose_city(request):
     if 'weather' in request.session:
         del request.session['weather']
     return redirect('get_weather')
+
+
+def page_not_found(request, exception):
+    return render(request, 'weather/page_not_found.html')
