@@ -1,5 +1,10 @@
+import os
+
 import requests
 from django.http import JsonResponse
+from dotenv import load_dotenv
+
+load_dotenv()
 
 menu = [
     {'title': 'Choose another city', 'url_name': 'choose_city'},
@@ -7,16 +12,16 @@ menu = [
 
 
 def weather_by_city(city_name):
-    weather_url = 'http://api.worldweatheronline.com/premium/v1/weather.ashx'
+    api_url = os.getenv('API_URL', default='http://api.worldweatheronline.com/premium/v1/weather.ashx')
     params = {
-        'key': 'a9e8d05689e64f64bbe142520241807',
+        'key': os.getenv('API_KEY', default='a9e8d05689e64f64bbe142520241807'),
         'q': city_name,
         'format': 'json',
         'num_of_days': 1,
         'lang': 'ru',
     }
     try:
-        result = requests.get(weather_url, params=params)
+        result = requests.get(api_url, params=params)
         result.raise_for_status()
         weather = result.json()
         if 'data' in weather:
