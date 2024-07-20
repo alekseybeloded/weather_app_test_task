@@ -11,6 +11,7 @@ ruff = "^0.5.2"
 django = "^5.0.7"
 requests = "^2.32.3"
 gunicorn = "^22.0.0"
+python-dotenv = "^1.0.1"
 
 [tool.ruff]
 lint.select = ["E", "E3", "F", "B", "I", "W", "UP", "T20"]

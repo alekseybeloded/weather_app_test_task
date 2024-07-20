@@ -1,7 +1,9 @@
 services:
   web:
+    env_file:
+      - .env
     restart: unless-stopped
-    image: ghcr.io/alekseybeloded/weather_app:v1.0.1
+    image: ghcr.io/alekseybeloded/weather_app:${VERSION}
     command: sh -c 'cd app &&
                 python manage.py makemigrations &&
                 python manage.py migrate &&
