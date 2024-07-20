@@ -25,6 +25,7 @@ ALLOWED_HOSTS=<127.0.0.1>
 API_URL=<API_URL>
 API_KEY=<API_KEY>
 ```
+* You can also use this project without .env file with default settings
 
 * Install <a href="https://docs.docker.com/engine/install/" class="external-link" style="text-decoration: none" target="_blank"><strong>Docker</strong></a>
 
