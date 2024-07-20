@@ -12,7 +12,7 @@ def get_weather(request):
             weather = weather_by_city(form.cleaned_data['city'])
         try:
             weather['temp_C'] and weather['FeelsLikeC']
-        except (AttributeError, TypeError):
+        except (AttributeError, TypeError, KeyError):
             return HttpResponse('Сервис погоды временно недоступен')
         temp = weather['temp_C']
         temp_feel = weather['FeelsLikeC']
