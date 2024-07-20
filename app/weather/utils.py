@@ -2,7 +2,7 @@ import requests
 from django.http import JsonResponse
 
 menu = [
-    {'title': 'Choose other city', 'url_name': 'home'},
+    {'title': 'Choose another city', 'url_name': 'choose_city'},
 ]
 
 
