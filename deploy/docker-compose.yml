@@ -1,0 +1,26 @@
+services:
+  web:
+    restart: unless-stopped
+    image: ghcr.io/alekseybeloded/weather_app:v1.0.1
+    command: sh -c 'cd app &&
+                python manage.py makemigrations &&
+                python manage.py migrate &&
+                python manage.py collectstatic --noinput &&
+                gunicorn app.wsgi:application --bind 0.0.0.0'
+    volumes:
+      - static_volume:/app/app/staticfiles
+
+  nginx:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - static_volume:/app/app/staticfiles
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  static_volume:
