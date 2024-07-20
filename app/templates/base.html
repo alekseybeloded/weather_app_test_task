@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head><script src="{% static 'weather/js/color-modes.js' %}"></script>
+	<meta charset="utf-8">
+  <title>Weather forecast</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'weather/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'weather/css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a class="d-inline-flex link-body-emphasis text-decoration-none">
+          <i><h7>Wheather app</h7></i>
+        </a>
+      </div>
+      {% block mainmenu %}
+      <div class="d-flex justify-content-center w-100">
+        <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
+          {% for item in menu %}
+          <li><a href="{% url item.url_name %}" class="nav-link px-2">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endblock mainmenu %}
+    </header>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {% block content %} {% endblock %}
+      </div>
+    </div>
+</div>
+
+  <script src="{% static 'weather/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
