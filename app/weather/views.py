@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from weather.forms import GetWeatherForm
@@ -25,7 +24,7 @@ def get_weather(request):
                 {'temp': temp, 'temp_feel': temp_feel, 'city': city, 'menu': menu}
             )
             except (AttributeError, TypeError, KeyError):
-                return HttpResponse('Сервис погоды временно недоступен')
+                return render(request, 'weather/error.html', {'form': form})
     else:
         form = GetWeatherForm()
 
